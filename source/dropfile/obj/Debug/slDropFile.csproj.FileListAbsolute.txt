@@ -1,0 +1,12 @@
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\DragDropDemo.dll
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\DragDropDemo.pdb
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\AppManifest.xaml
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\DragDropDemo.xap
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\TestPage.html
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\App.g.i.cs
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\MainPage.g.i.cs
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\DragDropDemo.g.resources
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\DragDropDemo.dll
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\DragDropDemo.pdb
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\XapCacheFile.xml

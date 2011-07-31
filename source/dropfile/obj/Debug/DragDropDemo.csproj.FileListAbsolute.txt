@@ -1,0 +1,36 @@
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\Bin\Debug\DragDropDemo.dll
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\Bin\Debug\DragDropDemo.pdb
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\Bin\Debug\AppManifest.xaml
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\Bin\Debug\DragDropDemo.xap
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\Bin\Debug\TestPage.html
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\obj\Debug\ResolveAssemblyReference.cache
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\obj\Debug\App.g.cs
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\obj\Debug\MainPage.g.cs
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\obj\Debug\DragDropDemo.g.resources
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\obj\Debug\DragDropDemo.dll
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\obj\Debug\DragDropDemo.pdb
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo\obj\Debug\XapCacheFile.xml
+C:\Demos\DragDropDemo\DragDropDemo\Bin\Debug\DragDropDemo.dll
+C:\Demos\DragDropDemo\DragDropDemo\Bin\Debug\DragDropDemo.pdb
+C:\Demos\DragDropDemo\DragDropDemo\Bin\Debug\AppManifest.xaml
+C:\Demos\DragDropDemo\DragDropDemo\Bin\Debug\DragDropDemo.xap
+C:\Demos\DragDropDemo\DragDropDemo\Bin\Debug\TestPage.html
+C:\Demos\DragDropDemo\DragDropDemo\obj\Debug\ResolveAssemblyReference.cache
+C:\Demos\DragDropDemo\DragDropDemo\obj\Debug\App.g.cs
+C:\Demos\DragDropDemo\DragDropDemo\obj\Debug\MainPage.g.cs
+C:\Demos\DragDropDemo\DragDropDemo\obj\Debug\DragDropDemo.g.resources
+C:\Demos\DragDropDemo\DragDropDemo\obj\Debug\DragDropDemo.dll
+C:\Demos\DragDropDemo\DragDropDemo\obj\Debug\DragDropDemo.pdb
+C:\Demos\DragDropDemo\DragDropDemo\obj\Debug\XapCacheFile.xml
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\DragDropDemo.dll
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\DragDropDemo.pdb
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\AppManifest.xaml
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\DragDropDemo.xap
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\Bin\Debug\TestPage.html
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\App.g.i.cs
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\MainPage.g.i.cs
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\DragDropDemo.g.resources
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\DragDropDemo.dll
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\DragDropDemo.pdb
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo\obj\Debug\XapCacheFile.xml

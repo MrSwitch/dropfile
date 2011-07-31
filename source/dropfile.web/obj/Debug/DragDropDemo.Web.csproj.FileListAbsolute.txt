@@ -1,0 +1,15 @@
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo.Web\bin\DragDropDemo.Web.dll
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo.Web\bin\DragDropDemo.Web.pdb
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo.Web\obj\Debug\DragDropDemo.Web.dll
+C:\Samples\Silverlight 4\DragDropDemo\DragDropDemo.Web\obj\Debug\DragDropDemo.Web.pdb
+C:\Demos\DragDropDemo\DragDropDemo.Web\bin\DragDropDemo.Web.dll
+C:\Demos\DragDropDemo\DragDropDemo.Web\bin\DragDropDemo.Web.pdb
+C:\Demos\DragDropDemo\DragDropDemo.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Demos\DragDropDemo\DragDropDemo.Web\obj\Debug\DragDropDemo.Web.dll
+C:\Demos\DragDropDemo\DragDropDemo.Web\obj\Debug\DragDropDemo.Web.pdb
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\bin\DragDropDemo.Web.dll
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\bin\DragDropDemo.Web.pdb
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\obj\Debug\DragDropDemo.Web.dll
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\obj\Debug\DragDropDemo.Web.pdb

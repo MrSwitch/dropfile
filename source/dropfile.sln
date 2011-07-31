@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropFile.Web", "dropfile.web\DropFile.Web.csproj", "{81566B41-B866-4D2B-8512-19F9E83587EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropFile", "dropfile\DropFile.csproj", "{74F8B268-6DF6-43E9-8DAB-6FAED958926F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81566B41-B866-4D2B-8512-19F9E83587EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81566B41-B866-4D2B-8512-19F9E83587EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81566B41-B866-4D2B-8512-19F9E83587EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81566B41-B866-4D2B-8512-19F9E83587EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F8B268-6DF6-43E9-8DAB-6FAED958926F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F8B268-6DF6-43E9-8DAB-6FAED958926F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F8B268-6DF6-43E9-8DAB-6FAED958926F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F8B268-6DF6-43E9-8DAB-6FAED958926F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

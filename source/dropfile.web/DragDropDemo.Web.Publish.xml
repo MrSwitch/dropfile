@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\inetpub\wwwroot\test\js\dropfiles" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="ClientBin/DragDropDemo.xap" publishTime="12/24/2010 13:26:01" />
+    <file relUrl="Web.config" publishTime="12/23/2010 14:31:29" />
+    <file relUrl="Silverlight.js" publishTime="12/23/2010 13:21:27" />
+    <file relUrl="demo.html" publishTime="12/24/2010 23:58:54" />
+    <file relUrl="bin/DragDropDemo.Web.dll" publishTime="12/23/2010 16:39:43" />
+    <file relUrl="bin/DragDropDemo.Web.pdb" publishTime="12/23/2010 16:39:43" />
+  </publishProfile>
+</publishData>

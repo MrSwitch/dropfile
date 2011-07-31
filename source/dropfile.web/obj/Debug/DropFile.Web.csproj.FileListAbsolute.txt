@@ -1,0 +1,10 @@
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\bin\DragDropDemo.Web.dll
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\bin\DragDropDemo.Web.pdb
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\obj\Debug\DragDropDemo.Web.dll
+C:\Users\i-andods\Downloads\dragdropdemo\DragDropDemo.Web\obj\Debug\DragDropDemo.Web.pdb
+C:\Users\i-andods\Downloads\dropfile\dropfile.web\bin\DragDropDemo.Web.dll
+C:\Users\i-andods\Downloads\dropfile\dropfile.web\bin\DragDropDemo.Web.pdb
+C:\Users\i-andods\Downloads\dropfile\dropfile.web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\i-andods\Downloads\dropfile\dropfile.web\obj\Debug\DragDropDemo.Web.dll
+C:\Users\i-andods\Downloads\dropfile\dropfile.web\obj\Debug\DragDropDemo.Web.pdb
