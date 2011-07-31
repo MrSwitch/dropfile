@@ -1,6 +1,9 @@
 # What is dropfile.js
 dropfile.js is a shim/polyfill for adding support for dragging files from the desktop to IE browsers prior to IE10 and FF prior to 3.6 browsers
 
+# Demo
+http://mrswitch.github.com/dropfile/
+
 # How to use dropfile.js
 
 1. Save *dropfile.js* and *dropfile.xap* into the same directory on your site.
