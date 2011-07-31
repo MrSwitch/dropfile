@@ -43,7 +43,7 @@ dropfile.js is a shim/polyfill for adding support for dragging files from the de
 
 # Working with jQuery
 
-jQuery and other API's, wrap the original javascript event object and makes it available at e.originalEvent. This script does not recognise jQuery but does recognise the ondrop event that was assigned by jQuery and will execute that when used. However now the original event object is passed to the handler not the wrapped up event object used in jQuery. But not to worry its easy to write code which can accomodate both approaches. See `./dropfile-jquery-demo.htm`
+jQuery and other API's, wrap the original javascript event object and makes it available at e.originalEvent. This script does not recognise jQuery but does recognise the ondrop event that was assigned by jQuery and will execute that when used. However now the original event object is passed to the handler not the wrapped up event object used in jQuery. But not to worry its easy to write code which can accomodate both approaches. See http://mrswitch.github.com/dropfile/dropfile-demo-jquery.htm
 
 
 # Browser Support
