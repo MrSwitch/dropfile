@@ -3,16 +3,7 @@
 
 <head>
     <title>dropfile.js - Drop Files into Browser</title>
-    <style type="text/css">
-    body{
-	    max-width:800px;
-	    margin:0 auto;
-	    font-family:"Sans-Serif", Arial;
-    }
-    div.section
-    {
-        padding:20px;
-    }
+<style>
     #holder{
         border:5px dashed gray;
         height:100px;
@@ -31,43 +22,9 @@
 		    #holder li img{
 		    	height:20px;
 		    }
-    
-    
-    pre{
-		border:1px solid lightgray;
-		border-left-width:10px;
-	}
-    
-   		table{
-			border-collapse: collapse;
-			border-spacing: 0;
-			width:100%;
-		}
-		td,th{
-			border:1px solid #D2D2D2;
-			padding:4px 10px 4px 6px;
-			vertical-align: top;
-		}
-		td.yes,span.yes{
-			background-color:#00882D;
-		}
-		td.no,span.no{
-			background-color:#CB000F;
-		}
-		td.partial,span.partial{
-			background-color:#20A84D;
-		}
-		td.no, td.yes,td.partial,
-		span.no, span.yes,span.partial{
-			color:white;
-			text-align:center;
-		}
- 
-    
-    </style>
 
-    
-<script id="onload">
+</style>
+<script>
     window.onload = function () {
         /**
         * Add drop functionality to our holder,
@@ -99,128 +56,11 @@
 </head>
 <body>
 
-    <h1>dropfile.js - Polyfill the Drag and drop + FileReader API</h1>
-    <h2>Demo</h2>
-    <div class="section">
+    <h1>dropfile.js - adding Drag&#39;n&#39;Drop file support to IE</h1>
     <div id="holder">
         Drop files from desktop here
-    </div>
     </div >
     
-    <h2>How it works</h2>
-     <p>
-     	<iframe src="http://player.vimeo.com/video/18326844" width="400" height="300" style="float:right;" frameborder="0"></iframe>
-
-        This fix works by "polyfilling" browsers which dont support the <a href="http://www.w3.org/TR/FileAPI/">File API</a> ... aka, they also dont expose file data 
-		when a file drop triggers a dropevent.</p>
-	<p>In the background a dragenter event gets hijacked by a silverlight widget which sneaks under the mouse cursor and picks up the file data. The Silverlight widget then interacts with javascript, giving it data about the file(s) being dropped, which triggers the standard drop event on the element.
-    </p>
-    <h3>Shall i break that down?...</h3>
-    <ol>
-        <li>Checks whether the browser natively supports the File API</li>
-		<li>Adds a silverlight object to the page and hides it by positioning it 
-		outside the window view</li>
-		<li>Adds <em>ondragenter </em>event to the <em>window.document</em> and performs the following actions:
-		<ol>
-			<li>The silverlight widget tailgates the mouse cursor</li>
-			<li>Creates window.dropFile in the scope of the element.</li>
-			<li>When files gets dropped on to the Silverlight widget, the Silverlight widget passes file data over to window.dropfile which triggers the ondrop event 
-			on that element in scope - An example of which is in the <a href="#sample">sample code</a> below.</li>
-		</ol>
-
-		</li>
-    </ol>
-    <h2>How to use</h2>
-    <p>Place this somewhere between your body tags</p>
-    <pre>
-&lt;script src=&quot;dropfile.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-if( !dropfile ){
-    alert(&quot;Quick, PANIC! this wont work on your internet viewer thing&quot;);
-}
-&lt;/script&gt;
-</pre>
-<p>... thats it then go add your HTML5 controls, see <a href="#sample">Sample Code</a></p>
-
-    <h2>Source</h2>
-	<ul>
-		<li><a href="dropfile.js">dropfile.js</a> - The javascript to add to the page</li>
-		<li><a href="dropfile.xap">dropfile.xap</a> - The silverlight widget needs to be placed in the same directory as the dropfile.js </li>
-	</ul>
-<a id="sample" name="sample"></a>
-    <h2>Sample Code</h2>
-    <p>This page uses the sample code below.</p>
-	
-	<script>	    document.write('<pre>' + document.getElementById('onload').innerHTML.replace(">", '&gt;').replace("<", '&lt;') + '</pre>');</script>
-
-<p>As you may notice this is all (but for <code>e.files</code>) standard HTML5 FIle API stuff to get this to work in all browsers you need to do 
-three things.</p>
-<h2>Implement</h2>
-<ol>
-	<li>Copy source files above to your webserver</li>
-	<li><code>&lt;script src=&quot;<a href="dropfile.js">dropfile.js</a>&quot;&gt;&lt;/script&gt;</code> - Add script to the bottom of the page</li>
-	<li><code>(e.files||e.dataTransfer.files)</code> - Gets files from event object</li>
-</ol>
-
-<h2>Error tracking</h2>
-<p>Todo: Silverlight installation version</p>
-
-<h2>Working with jQuery</h2>
-<p>jQuery wraps the original event object and makes it available at 
-e.originalEvent. This script does not recognise jQuery but does recognise the 
-ondrop event that was assigned by jQuery and will execute that when used. 
-However now the original event object is passed to the handler not the wrapped 
-up event object used in jQuery. But not to worry its easy to write code which can accomodate both approaches.</p>
-<h3>jQuery Demo</h3>
-<a href="jQuery-drop-demo.htm">Drop file jQuery Demo</a>
-<h2>Browser Support</h2>
-<table>
-	<tr>
-		<td >Browser</td>
-		<th >IE9</th>
-		<th >IE8</th>
-		<th >IE7</th>
-		<th >FF3.5</th>
-		<th >FF3.6</th>
-		<th >Chrome 6+</th>
-		<th >Safari 5 (win)</th>
-		<th >Safari 6 (win)</th>
-		<th >Opera 10</th>
-	</tr>
-	<tr>
-		<th>File API / dropfile</th>
-		<td class="yes" colspan=3>dropfile</td>
-		<td class="yes" >dropfile</td>
-		<td class="yes" >File API</td>
-		<td class="yes" >File API</td>
-		<td class="yes" >dropfile</td>
-		<td class="yes" >File API</td>
-		<td class="no" >no<sup>1</sup></td>
-	</tr>
-</table>
-<ol>
-	<li>Silverlight does not run in Opera, nor does Opera support the File API</li>
-</ol>
-
-    <h2>Why it was done this way, rather than... </h2>
-    <ul>
-        <li><strong>Why not... Make the Silverlight object transparent over element</strong><em>. 
-		</em> <br /><em>answer</em>: The Silverlight object needs to be in "windowless" mode for transparency, 
-		however in this mode we lose the drag and drop UI. See <a href="http://msdn.microsoft.com/en-us/library/cc838156(VS.95).aspx">http://msdn.microsoft.com/en-us/library/cc838156(VS.95).aspx</a></li>
-		<li><strong>Why not... Add drop functionality implictly to objects</strong><br />
-		<em>answer</em>: So this is the Event Delegation vs Event Handling argument. Using Event Delegation we 
-		add this to the document ondragenter event and explicitly add this to elements 
-		which match a condition as the user drags over elements, thus avoiding 
-		having to add functional code.</li>
-		<li><strong>Why not... Update e.dataTransfer.files instead of having to write 
-		(e.files||e.dataTransfer.files)</strong><br/><em>answer</em>: The Event object dataTransfer is immutable therefore we can only pass in a bespoke method. This is only for IE8 and less, in IE9 we can define the dataTransfer files.
-		</li>
-		<li><strong>Why not... Call the widget on just the elements which have an ondrop event, 
-		rather than the whole doc.</strong><br/>
-		<em>answer</em>: initially i required elements to have a flag to say, yes this has an ondropevent because there is no way to find out if they do (i.e. "Event delegation"). And it's too much hassle to add classNames, i guess i could add a strict mode, but i wanted a script that could be "dropped in", if you'll pardon the pun.</li>
-    </ul>
-
-	<p>&nbsp;</p>
 
 	<!-- Include our drop file fix -->
     <script src="dropfile.js"></script>
