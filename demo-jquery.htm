@@ -32,22 +32,15 @@
 		    	height:20px;
 		    }
 	    
-    
-    pre{
-		border:1px solid lightgray;
-		border-left-width:10px;
-	}
-    
-    
     </style>
     
-<script id="onload">
+<script>
 $(document).ready(function () {
     /**
     * Add drop functionality to our holder,
     * This is standard HTML5 File API
     */
-	$("#holder").addClass("sldropzone").bind('dragover',function(){return false;}).bind('drop', function(e){
+	$("#holder").bind('dragover',function(){return false;}).bind('drop', function(e){
 		var holder= this;
 		e = (e&&e.originalEvent?e.originalEvent:window.event) || e;
 		
@@ -78,8 +71,6 @@ $(document).ready(function () {
     <div id="holder">
         Drop files from desktop here
     </div>
-    <script>document.write('<pre>'+document.getElementById('onload').innerHTML.replace(">",'&gt;').replace("<",'&lt;')+'</pre>');</script>
     <script src="dropfile.js"></script>
-
 </body>
 </html>
