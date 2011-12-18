@@ -159,10 +159,14 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
                     // data
                     base64 = arguments[i].split(',')[1],
                     // mime type based upon extension
-                    mime = { png: "image/png",
-                        jpg: "image/jpeg",
-                        jpeg: "image/jpeg",
-                        gif: "image/gif"
+                    mime = { png: "image/png"
+                           , PNG: "image/png"
+                           , jpg: "image/jpeg"
+                           , JPG: "image/jpeg"
+                           , jpeg: "image/jpeg"
+                           , JPEG: "image/jpeg"
+                           , gif: "image/gif"
+                           , GIF: "image/gif"
                     }[name.match(/[^\.]*$/)[0]] || "";
 
                 dataTransfer.files[i] = { name: name, size: base64.length, data: base64, type : mime }
