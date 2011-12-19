@@ -163,7 +163,7 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
                         jpg: "image/jpeg",
                         jpeg: "image/jpeg",
                         gif: "image/gif"
-                    }[name.match(/[^\.]*$/)[0]] || "";
+                    }[name.toLowerCase().match(/[^\.]*$/)[0]] || "";
 
                 dataTransfer.files[i] = { name: name, size: base64.length, data: base64, type : mime }
             }
