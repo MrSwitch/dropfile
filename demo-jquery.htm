@@ -40,15 +40,24 @@ $(document).ready(function () {
     * Add drop functionality to our holder,
     * This is standard HTML5 File API
     */
-	$("#holder").bind('dragover',function(){return false;}).bind('drop', function(e){
+	var ignoreDrag = function(e) {
+		var event = typeof e.originalEvent != 'undefined' ? e.originalEvent : e;
+		if (event.stopPropagation) {
+			event.stopPropagation();
+		}
+		if (event.preventDefault) {
+			event.preventDefault();
+		}
+	};
+
+	$("#holder").bind('dragover', ignoreDrag).bind('dragenter', ignoreDrag).bind('drop', function(e){
 		var holder= this;
 		e = (e&&e.originalEvent?e.originalEvent:window.event) || e;
-		
-		if(e.preventDefault){
-			e.preventDefault();
-		}
+
+		ignoreDrag(e);
+
 		var files = (e.files||e.dataTransfer.files);
-		
+
 		var s = "";
 		for (var i = 0; i < files.length; i++) {
 			(function(i){
