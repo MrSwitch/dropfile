@@ -60,7 +60,7 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
     var path = (function (){
         var s = document.getElementsByTagName('script'),
         p = s[s.length-1];
-        return (p.src?p.src:p.getAttribute('src')).match(/(.*\/)/)[0] || "";
+        return ((p.src?p.src:p.getAttribute('src')).match(/(.*\/)/) || [""])[0];
 	})();
 
     /**
