@@ -143,8 +143,10 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
                 e.pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
             }
             // Update the position of the silverlight widget
-            sl.style.top = (e.pageY - 7) + "px";
-            sl.style.left = (e.pageX - 7) + "px";
+            var _cs = window.getComputedStyle(document.body, "");
+
+            sl.style.top =  ( (e.pageY - 7) - parseFloat(_cs.marginTop||0) ) + "px";
+            sl.style.left = ( (e.pageX - 7) - parseFloat(_cs.marginLeft||0) ) + "px";
         });
         return false;
     });
@@ -308,4 +310,21 @@ if(!('atob' in window)) {
 		}
 		return d.join('');
 	}
+}
+
+if (!window.getComputedStyle) {
+    window.getComputedStyle = function(el, pseudo) {
+        this.el = el;
+        this.getPropertyValue = function(prop) {
+            var re = /(\-([a-z]){1})/g;
+            if (prop == 'float') prop = 'styleFloat';
+            if (re.test(prop)) {
+                prop = prop.replace(re, function () {
+                    return arguments[2].toUpperCase();
+                });
+            }
+            return el.currentStyle[prop] ? el.currentStyle[prop] : null;
+        }
+        return this;
+    }
 }

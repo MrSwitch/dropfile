@@ -6,12 +6,6 @@
     <script src="/_packages/document.js"></script>
     <title>dropfile.js - Drop Files into Browser</title>
 <style>
-    body{
-        /** We need this to ensure we have calculated the right position */
-        max-width:100%;
-        width:100%;
-        margin:0;
-    }
 
     #holder{
         border:1px solid lightgray;
@@ -81,5 +75,15 @@ holder.ondrop = function (e) {
 };
 </script>
 
+
+<p>Because in IE8 we can't get the appropriate position of the mouse because of the Margin on the body. Lets make the margin 0;
+<script class="pre">
+// demo fix for IE8
+if(window.getComputedStyle(document.body, "").getPropertyValue('marginLeft')==="auto"){
+    document.body.style.width = "100%";
+    document.body.style.maxWidth = "100%";
+    document.body.style.margin = "0px";
+}
+</script>
 </body>
 </html>
