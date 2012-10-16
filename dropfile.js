@@ -170,17 +170,6 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
 
             // dispatch events
             try {
-                // IE9,FF3<>FF3.5
-                var dropEvent = document.createEvent("DragEvent");
-                dropEvent.initDragEvent("drop", true, true, window, 0,
-	                                        0, 0, 0, 0,
-                //event.screenX, event.screenY, event.clientX, event.clientY, 
-	                                        false, false, false, false,
-                //event.ctrlKey, event.altKey, event.shiftKey, event.metaKey, 
-	                                        0, null, dataTransfer);
-                el.dispatchEvent(dropEvent);
-            }
-            catch (e) {
                 // <=IE8, <FF3
                 var dropEvent = document.createEventObject();
                 dropEvent.files = dataTransfer.files;
@@ -190,6 +179,23 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
                 } else if (el.dispatchEvent) {
                     el.dispatchEvent(dropEvent);
                 } else throw ("Whoops could not trigger the drop event");
+            }
+            catch (e) {
+
+                try{
+                    // IE9,FF3<>FF3.5
+                    var dropEvent = document.createEvent("DragEvent");
+                    dropEvent.initDragEvent("drop", true, true, window, 0,
+                                                0, 0, 0, 0,
+                    //event.screenX, event.screenY, event.clientX, event.clientY, 
+                                                false, false, false, false,
+                    //event.ctrlKey, event.altKey, event.shiftKey, event.metaKey, 
+                                                0, null, dataTransfer);
+                    el.dispatchEvent(dropEvent);
+                }
+                catch(e){
+                    throw ("Whoops could not trigger the drop event");
+                }
             }
         };
 		return false;

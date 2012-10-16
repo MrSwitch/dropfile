@@ -2,23 +2,27 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="/_packages/document.css"/>
+    <script src="/_packages/document.js"></script>
     <title>dropfile.js - Drop Files into Browser</title>
 <style>
     body{
-	    max-width:800px;
-	    margin:0 auto;
-	    font-family:"Sans-Serif";
+        /** We need this to ensure we have calculated the right position */
+        max-width:100%;
+        width:100%;
+        margin:0;
     }
+
     #holder{
-        border:5px dashed gray;
+        border:1px solid lightgray;
         height:100px;
-        border-radius:20px;
-        width:50%;
-        margin:auto;
         font-size:20px;
-        color:Gray;
+        color:gray;
         text-align:center;
-        overflow:hidden;
+        padding:20px;
+    }
+    #holder:hover{
+        background-color:lightgray;
     }
 	    #holder ul{
 	    	width:100%;
@@ -29,52 +33,53 @@
 		    }
 
 </style>
-<script>
-    window.onload = function () {
-        /**
-        * Add drop functionality to our holder,
-        * This is standard HTML5 File API
-        */
-        var holder = document.getElementById('holder');
-        holder.ondragover = function () { return false; };
-        holder.ondragenter = function () { return false; };
-        holder.ondrop = function (e) {
-            e = e || window.event;
-            var files = (e.files || e.dataTransfer.files);
-
-            var s = "";
-            for (var i = 0; i < files.length; i++) {
-                (function (i) {
-                    var reader = new FileReader();
-                    reader.onload = function (event) {
-                        holder.innerHTML = "<li><img src='" + event.target.result + "' /> " + (files[i].name) + "</li>" + holder.innerHTML;
-                    };
-                    reader.readAsDataURL(files[i]);
-                })(i);
-            }
-
-            return false;
-        };
-    }
-
-</script>
 </head>
 <body>
 
-    <h1>Drag and drop file demo</h1>
-    <div id="holder">
-        Drop files from desktop here
-    </div >
+<h1>Drag and drop file demo</h1>
+
+
+<div id="holder">
+    Drop files from desktop here
+</div >
     
+<h2>Source</h2>
+<p>Include our drop file fix for IE8,9</p>
+<script src="dropfile.js" class="pre"></script>
 
-	<!-- Include our drop file fix -->
-    <script src="dropfile.js"></script>
-    <script>
-    	if( !window.dropfile ){
-    		document.getElementById("holder").innerHTML = "Ouch this browser doesn't support this fix";
-    	}
-    </script>
+<p>Add event listeners to the area where we want to drop files</p>
+<script>
+	if( !window.dropfile ){
+		document.getElementById("holder").innerHTML = "Ouch this browser doesn't support FileReader or the shim. " + (!Silverlight.isInstalled()?"<br/><b>Please install Silverlight</b>":"");
+	}
+</script>
 
+<script class="pre">
+var holder = document.getElementById('holder');
+holder.ondragover = function () { return false; };
+holder.ondragenter = function () { return false; };
+holder.ondrop = function (e) {
+
+    // ensure that we listen out for the window event
+    e = e || window.event;
+
+    // And that for the fix to work we accept `e.files`
+    var files = (e.files || e.dataTransfer.files);
+
+    var s = "";
+    for (var i = 0; i < files.length; i++) {
+        (function (i) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                holder.innerHTML = "<li><img src='" + event.target.result + "' /> " + (files[i].name) + "</li>" + holder.innerHTML;
+            };
+            reader.readAsDataURL(files[i]);
+        })(i);
+    }
+
+    return false;
+};
+</script>
 
 </body>
 </html>
