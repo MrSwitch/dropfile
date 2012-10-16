@@ -2,27 +2,21 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="/_packages/document.css"/>
+    <script src="/_packages/document.js"></script>
     <title>Drop Files into Browser</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <style type="text/css">
-    body{
-	    max-width:800px;
-	    margin:0 auto;
-	    font-family:"Sans-Serif";
-    }
     #silverlightControlHost {
 	    height: 100%;
 	    text-align:center;
     }
     #holder{
-        border:5px dashed gray;
+        border:1px solid lightgray;
         height:100px;
-        border-radius:20px;
-        width:50%;
-        margin:auto;
         font-size:20px;
-        color:Gray;
+        color:gray;
         text-align:center;
+        padding:20px;
     }
 	    #holder ul{
 	    	width:100%;
@@ -34,7 +28,22 @@
 	    
     </style>
     
-<script>
+</head>
+<body>
+
+    <h1>Drag and drop file demo with jQuery Event binding</h1>
+    <div id="holder">
+        Drop files from desktop here
+    </div>
+
+<h2>Source</h2>
+
+<p>Include jQuery and shim</p>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" class="pre"></script>
+<script src="dropfile.js" class="pre"></script>
+
+<p>Add DOM created event to add events and cancel some defaults</p>
+<script class="pre">
 $(document).ready(function () {
     /**
     * Add drop functionality to our holder,
@@ -73,13 +82,14 @@ $(document).ready(function () {
 	});
 });
 </script>
-</head>
-<body>
-
-    <h1>Drag and drop file demo using jQuery</h1>
-    <div id="holder">
-        Drop files from desktop here
-    </div>
-    <script src="dropfile.js"></script>
+<p>Because in IE8 we can't get the appropriate position of the mouse because of the Margin on the body. Lets make the margin 0</p>
+<script class="pre">
+// demo fix for IE8
+if(window.getComputedStyle(document.body, "").getPropertyValue('marginLeft')==="auto"){
+    document.body.style.width = "100%";
+    document.body.style.maxWidth = "100%";
+    document.body.style.margin = "0px";
+}
+</script>
 </body>
 </html>
