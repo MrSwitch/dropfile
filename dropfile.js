@@ -83,6 +83,7 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
 
     // Position the silverlight container iniitally
     sl.style.display = 'block';
+    sl.id = "SilverlightContainer";
     sl.style.position = 'absolute';
     sl.style.width = sl.style.height = "10px";
 
@@ -121,12 +122,17 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
     * DragEnter + Event delegation,
     * When a drag enter event occurs if the current target is a drop zone overlay element with the Silverlight app.
     */
+    var el;
    addEvent( (document.body||document), "dragenter", function(event) {
         //IE doesn't pass in the event object
         event = event || window.event;
 
         //IE uses srcElement as the target
-        var el = event.target || event.srcElement;
+        var _el = event.target || event.srcElement;
+        if(_el.id === "SilverlightControl" || _el.id === "SilverlightContainer" ){
+            return;
+        }
+        el = _el;
 
         // Use the dragover events to keep the silver light widget under the mouse cursor
         addEvent( el, "dragover", function (e) {
@@ -140,66 +146,66 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
             sl.style.top = (e.pageY - 7) + "px";
             sl.style.left = (e.pageX - 7) + "px";
         });
-
-
-        /**
-        * Add Callback which will be triggered via silverlight
-        */
-        window.dropfile = function () {
-            // Instantly hide the SilverLight Application
-            hide(true);
-            // Drop the file
-            // We are trying to recreate an event here... 
-            // this is very hacky and means we have to recreate everything in a typical event otherwise we can break code
-            var dataTransfer = { files: [] };
-
-            for (var i = 0; i < arguments.length; i++) {
-                     // filename
-                var name = arguments[i].split(',')[0],
-                    // data
-                    base64 = arguments[i].split(',')[1],
-                    // mime type based upon extension
-                    mime = { png: "image/png",
-                        jpg: "image/jpeg",
-                        jpeg: "image/jpeg",
-                        gif: "image/gif"
-                    }[name.toLowerCase().match(/[^\.]*$/)[0]] || "";
-
-                dataTransfer.files[i] = { name: name, size: base64.length, data: base64, type : mime }
-            }
-
-            // dispatch events
-            try {
-                // <=IE8, <FF3
-                var dropEvent = document.createEventObject();
-                dropEvent.files = dataTransfer.files;
-
-                if (el.fireEvent) {
-                    el.fireEvent('ondrop', dropEvent);
-                } else if (el.dispatchEvent) {
-                    el.dispatchEvent(dropEvent);
-                } else throw ("Whoops could not trigger the drop event");
-            }
-            catch (e) {
-
-                try{
-                    // IE9,FF3<>FF3.5
-                    var dropEvent = document.createEvent("DragEvent");
-                    dropEvent.initDragEvent("drop", true, true, window, 0,
-                                                0, 0, 0, 0,
-                    //event.screenX, event.screenY, event.clientX, event.clientY, 
-                                                false, false, false, false,
-                    //event.ctrlKey, event.altKey, event.shiftKey, event.metaKey, 
-                                                0, null, dataTransfer);
-                    el.dispatchEvent(dropEvent);
-                }
-                catch(e){
-                    throw ("Whoops could not trigger the drop event");
-                }
-            }
-        };
-		return false;
+        return false;
     });
+
+    /**
+    * Add Callback which will be triggered via silverlight
+    */
+    window.dropfile = function () {
+        // Instantly hide the SilverLight Application
+        hide(true);
+        console.log(el.id);
+        // Drop the file
+        // We are trying to recreate an event here... 
+        // this is very hacky and means we have to recreate everything in a typical event otherwise we can break code
+        var dataTransfer = { files: [] };
+
+        for (var i = 0; i < arguments.length; i++) {
+                 // filename
+            var name = arguments[i].split(',')[0],
+                // data
+                base64 = arguments[i].split(',')[1],
+                // mime type based upon extension
+                mime = { png: "image/png",
+                    jpg: "image/jpeg",
+                    jpeg: "image/jpeg",
+                    gif: "image/gif"
+                }[name.toLowerCase().match(/[^\.]*$/)[0]] || "";
+
+            dataTransfer.files[i] = { name: name, size: base64.length, data: base64, type : mime }
+        }
+
+        // dispatch events
+        try {
+            // <=IE8, <FF3
+            var dropEvent = document.createEventObject();
+            dropEvent.files = dataTransfer.files;
+
+            if (el.fireEvent) {
+                el.fireEvent('ondrop', dropEvent);
+            } else if (el.dispatchEvent) {
+                el.dispatchEvent(dropEvent);
+            } else throw ("Whoops could not trigger the drop event");
+        }
+        catch (e) {
+
+            try{
+                // IE9,FF3<>FF3.5
+                var dropEvent = document.createEvent("DragEvent");
+                dropEvent.initDragEvent("drop", true, true, window, 0,
+                                            0, 0, 0, 0,
+                //event.screenX, event.screenY, event.clientX, event.clientY, 
+                                            false, false, false, false,
+                //event.ctrlKey, event.altKey, event.shiftKey, event.metaKey, 
+                                            0, null, dataTransfer);
+                el.dispatchEvent(dropEvent);
+            }
+            catch(e){
+                throw ("Whoops could not trigger the drop event");
+            }
+        }
+    };
 	
 
     /**
