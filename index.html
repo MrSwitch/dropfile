@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/_packages/document.css"/>
+    <script src="/_packages/document.js"></script>
+    <title>dropfile.js - Drop Files into Browser</title>
+<style>
+    body{
+        /** We need this to ensure we have calculated the right position */
+        max-width:100%;
+        width:100%;
+        margin:0;
+    }
+
+    #holder{
+        border:1px solid lightgray;
+        height:100px;
+        font-size:20px;
+        color:gray;
+        text-align:center;
+        padding:20px;
+    }
+    #holder:hover{
+        background-color:lightgray;
+    }
+	    #holder ul{
+	    	width:100%;
+	    	text-align:left;
+	    }
+		    #holder li img{
+		    	height:20px;
+		    }
+
+</style>
+</head>
+<body>
+
+<h1>Drag and drop file demo</h1>
+
+
+<div id="holder">
+    Drop files from desktop here
+</div >
+    
+<h2>Source</h2>
+<p>Include our drop file fix for IE8,9</p>
+<script src="dropfile.js" class="pre"></script>
+
+<p>Add event listeners to the area where we want to drop files</p>
+<script>
+	if( !window.dropfile ){
+		document.getElementById("holder").innerHTML = "Ouch this browser doesn't support FileReader or the shim. " + (!Silverlight.isInstalled()?"<br/><b>Please install Silverlight</b>":"");
+	}
+</script>
+
+<script class="pre">
+var holder = document.getElementById('holder');
+holder.ondragover = function () { return false; };
+holder.ondragenter = function () { return false; };
+holder.ondrop = function (e) {
+
+    // ensure that we listen out for the window event
+    e = e || window.event;
+
+    // And that for the fix to work we accept `e.files`
+    var files = (e.files || e.dataTransfer.files);
+
+    var s = "";
+    for (var i = 0; i < files.length; i++) {
+        (function (i) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                holder.innerHTML = "<li><img src='" + event.target.result + "' /> " + (files[i].name) + "</li>" + holder.innerHTML;
+            };
+            reader.readAsDataURL(files[i]);
+        })(i);
+    }
+
+    return false;
+};
+</script>
+
+</body>
+</html>
