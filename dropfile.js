@@ -84,8 +84,8 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
     // Position the silverlight container iniitally
     sl.style.display = 'block';
     sl.id = "SilverlightContainer";
-    sl.style.position = 'absolute';
-    sl.style.width = sl.style.height = "10px";
+    sl.style.position = 'fixed';
+    sl.style.width = sl.style.height = "80px";
 
 	
     var attach = function(){
@@ -102,7 +102,7 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
     hide();
 
     function hide(e) {
-        sl.style.left = sl.style.top = "-10000px";
+        sl.style.left = sl.style.top = "-1000px";
     }
 	/**
 	 * Add eventlistner
@@ -139,14 +139,12 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
             e = e || window.event;
             // Define pageX and pageY if the window doesn't already have them defined.
             if (!("pageX" in e)) {
-                e.pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-                e.pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+                e.pageX = e.clientX;
+                e.pageY = e.clientY;
             }
-            // Update the position of the silverlight widget
-            var _cs = window.getComputedStyle(document.body, "");
 
-            sl.style.top =  ( (e.pageY - 7) - parseFloat(_cs.marginTop||0) ) + "px";
-            sl.style.left = ( (e.pageX - 7) - parseFloat(_cs.marginLeft||0) ) + "px";
+            sl.style.top =  ( e.pageY - 5 ) + "px";
+            sl.style.left = ( e.pageX - 5 ) + "px";
         });
         return false;
     });
@@ -157,7 +155,6 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
     window.dropfile = function () {
         // Instantly hide the SilverLight Application
         hide(true);
-        console.log(el.id);
         // Drop the file
         // We are trying to recreate an event here... 
         // this is very hacky and means we have to recreate everything in a typical event otherwise we can break code
