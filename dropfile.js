@@ -175,23 +175,13 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
             dataTransfer.files[i] = { name: name, size: base64.length, data: base64, type : mime }
         }
 
-        // dispatch events
-        try {
-            // <=IE8, <FF3
-            var dropEvent = document.createEventObject();
-            dropEvent.files = dataTransfer.files;
-
-            if (el.fireEvent) {
-                el.fireEvent('ondrop', dropEvent);
-            } else if (el.dispatchEvent) {
-                el.dispatchEvent(dropEvent);
-            } else throw ("Whoops could not trigger the drop event");
-        }
-        catch (e) {
-
+        // NEW SKOOL: Dispatch events
+        if(el.dispatchEvent){
             try{
                 // IE9,FF3<>FF3.5
                 var dropEvent = document.createEvent("DragEvent");
+                // Fix binding with addEventListener
+                dropEvent.files = dataTransfer.files;
                 dropEvent.initDragEvent("drop", true, true, window, 0,
                                             0, 0, 0, 0,
                 //event.screenX, event.screenY, event.clientX, event.clientY, 
@@ -204,6 +194,19 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
                 throw ("Whoops could not trigger the drop event");
             }
         }
+        // OLD SKOOL: Dispatch events
+        else if (el.fireEvent) {
+            try {
+                // <=IE8, <FF3
+                var dropEvent = document.createEventObject();
+                dropEvent.files = dataTransfer.files;
+                el.fireEvent('ondrop', dropEvent);
+            }catch(e){
+                // Error firing IE's event handlers   
+                throw ("Whoops could not trigger the drop event");
+            }
+        }
+
     };
 	
 
