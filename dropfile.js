@@ -63,47 +63,88 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
         return ((p.src?p.src:p.getAttribute('src')).match(/(.*\/)/) || [""])[0];
 	})();
 
-    /**
-     * Create the Silverlight Overlay, this will be moved into position once drop occurs
-     */
-    var sl = document.createElement('div');
-    Silverlight.createObjectEx({
-        source: path + "dropfile.xap",
-        parentElement: sl,
-        id: "SilverlightControl",
-        properties: {
-            width: "100%",
-            height: "100%",
-            version: "2.0",
-            background: "#FFFFFF"
-            //   isWindowless:"True",
-            //   background: "#00FFFFFF"
-        }
-    });
+    var sl; // the Silverlight Widget
+    var el; // the current drop zone
 
-    // Position the silverlight container iniitally
-    sl.style.display = 'block';
-    sl.id = "SilverlightContainer";
-    sl.style.position = 'fixed';
-    sl.style.width = sl.style.height = "80px";
-
-	
+    // Attach the element to the page.
+    // ... if the body exists that is.
     var attach = function(){
-    	if(document.getElementsByTagName('body').length===1){
-    		document.getElementsByTagName('body')[0].appendChild(sl);
-    		return true;
-    	}
-    	return false;
+
+        if(!document.getElementsByTagName('body').length){
+            return false;
+        }
+
+        /**
+         * Create the Silverlight Overlay, this will be moved into position once drop occurs
+         */
+        sl = document.createElement('div');
+        Silverlight.createObjectEx({
+            source: path + "dropfile.xap",
+            parentElement: sl,
+            id: "SilverlightControl",
+            properties: {
+                width: "100%",
+                height: "100%",
+                version: "2.0",
+                background: "#FFFFFF"
+                //   isWindowless:"True",
+                //   background: "#00FFFFFF"
+            }
+        });
+
+        // Position the silverlight container iniitally
+        sl.style.display = 'block';
+        sl.id = "SilverlightContainer";
+        sl.style.position = 'fixed';
+        sl.style.width = sl.style.height = "80px";
+
+		document.getElementsByTagName('body')[0].appendChild(sl);
+
+        // Hide by default
+        hide();
+
+        /**
+        * DragEnter + Event delegation,
+        * When a drag enter event occurs if the current target is a drop zone overlay element with the Silverlight app.
+        */
+        addEvent( (document.body||document), "dragenter", function(event) {
+            //IE doesn't pass in the event object
+            event = event || window.event;
+
+            //IE uses srcElement as the target
+            var _el = event.target || event.srcElement;
+            if(_el.id === "SilverlightControl" || _el.id === "SilverlightContainer" ){
+                return;
+            }
+            el = _el;
+
+            // Use the dragover events to keep the silver light widget under the mouse cursor
+            addEvent( el, "dragover", function (e) {
+                e = e || window.event;
+                // Define pageX and pageY if the window doesn't already have them defined.
+                if (!("pageX" in e)) {
+                    e.pageX = e.clientX;
+                    e.pageY = e.clientY;
+                }
+
+                sl.style.top =  ( e.pageY - 5 ) + "px";
+                sl.style.left = ( e.pageX - 5 ) + "px";
+            });
+            return false;
+        });
+
+		return true;
+
     };
+
    	if(!attach()){
     	addEvent(window,'load',attach);
    	};
 
-    hide();
-
     function hide(e) {
         sl.style.left = sl.style.top = "-1000px";
     }
+
 	/**
 	 * Add eventlistner
 	 */
@@ -118,36 +159,6 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
 		}
 	}
 
-    /**
-    * DragEnter + Event delegation,
-    * When a drag enter event occurs if the current target is a drop zone overlay element with the Silverlight app.
-    */
-    var el;
-   addEvent( (document.body||document), "dragenter", function(event) {
-        //IE doesn't pass in the event object
-        event = event || window.event;
-
-        //IE uses srcElement as the target
-        var _el = event.target || event.srcElement;
-        if(_el.id === "SilverlightControl" || _el.id === "SilverlightContainer" ){
-            return;
-        }
-        el = _el;
-
-        // Use the dragover events to keep the silver light widget under the mouse cursor
-        addEvent( el, "dragover", function (e) {
-            e = e || window.event;
-            // Define pageX and pageY if the window doesn't already have them defined.
-            if (!("pageX" in e)) {
-                e.pageX = e.clientX;
-                e.pageY = e.clientY;
-            }
-
-            sl.style.top =  ( e.pageY - 5 ) + "px";
-            sl.style.left = ( e.pageX - 5 ) + "px";
-        });
-        return false;
-    });
 
     /**
     * Add Callback which will be triggered via silverlight
