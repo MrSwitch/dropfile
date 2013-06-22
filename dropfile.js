@@ -11,7 +11,7 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
 
@@ -23,7 +23,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * 
+ *
  * @author Andrew Dodson (drew81.com)
  * @since Dec/2010
  */
@@ -96,7 +96,7 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
     	return false;
     };
    	if(!attach()){
-    	window.onload = attach;
+    	addEvent(window,'load',attach);
    	};
 
     hide();
