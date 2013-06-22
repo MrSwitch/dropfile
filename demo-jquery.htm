@@ -82,14 +82,5 @@ $(document).ready(function () {
 	});
 });
 </script>
-<p>Because in IE8 we can't get the appropriate position of the mouse because of the Margin on the body. Lets make the margin 0</p>
-<script class="pre">
-// demo fix for IE8
-if(window.getComputedStyle(document.body, "").getPropertyValue('marginLeft')==="auto"){
-    document.body.style.width = "100%";
-    document.body.style.maxWidth = "100%";
-    document.body.style.margin = "0px";
-}
-</script>
 </body>
 </html>
