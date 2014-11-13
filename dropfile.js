@@ -180,7 +180,14 @@ if (!window.Silverlight) window.Silverlight = {}; Silverlight._silverlightCount 
                 mime = { png: "image/png",
                     jpg: "image/jpeg",
                     jpeg: "image/jpeg",
-                    gif: "image/gif"
+                    gif: "image/gif",
+                    doc: "application/msword",
+                    docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    xls: "application/vnd.ms-excel",
+                    xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    pdf: "application/pdf",
+                    zip: "application/x-zip-compressed",
+                    rar: "application/x-rar-compressed"
                 }[name.toLowerCase().match(/[^\.]*$/)[0]] || "";
 
             dataTransfer.files[i] = { name: name, size: base64.length, data: base64, type : mime }
